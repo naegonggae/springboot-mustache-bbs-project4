@@ -1,10 +1,24 @@
-<div>
-    이 곳은 show입니다.
+{{>layouts/header}}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+    </tr>
+    </thead>
+    <tbody>
     {{#article}}
-        {{id}} {{title}} {{content}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td>{{title}}</td>
+            <td>{{content}}</td>
+        </tr>
     {{/article}}
-</div>
-<a href="/articles/new">New Article</a>
-<a href="/articles">Article List</a>
-<a href="/articles/{{id}}/edit">Edit</a>
-<a href="/articles/{{id}}/delete">Delete</a>
+    </tbody>
+</table>
+<a href="/articles/new" class="btn btn-success">New Article</a>
+<a href="/articles" class="btn btn-warning">Article List</a>
+<a href="/articles/{{id}}/edit" class="btn btn-primary">Edit</a>
+<a href="/articles/{{id}}/delete" class="btn btn-danger">Delete</a>
+{{>layouts/footer}}
