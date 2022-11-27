@@ -1,0 +1,11 @@
+<div>
+    이 곳은 list입니다.
+    {{# article}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td><a href="/articles/{{id}}">{{title}}</a></td>
+            <td>{{content}}</td>
+        </tr>
+    {{/article}}
+</div>
+<a href="/articles/new">New Article</a>

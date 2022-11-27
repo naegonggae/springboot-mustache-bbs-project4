@@ -1,0 +1,11 @@
+{{#article}}
+
+    <form action="/articles/{{id}}/update" method="post">
+        <input type="hidden" name="id" value="{{id}}"/>
+        <input type="text" name="title" value="{{title}}"/>
+        <input type="text" name="content" value="{{content}}"/>
+        <input type="submit" />
+    </form>
+    <a href="/articles">Article List</a>
+    <a href="/articles/{{id}}">한개 조회 페이지</a>
+{{/article}}
