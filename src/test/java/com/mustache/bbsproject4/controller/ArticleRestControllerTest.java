@@ -39,15 +39,15 @@ class ArticleRestControllerTest {
     @Test
     @DisplayName("해당 id의 글이 조회가 잘 되는지")
     void findSingle() throws Exception {
-        Long id = 3l;
+        Long id = 1l;
 
         given(articleService.getArticleById(id))
-                .willReturn(new ArticleDto(3l, "첫 번째 글", "내용입니다"));
+                .willReturn(new ArticleDto(1l, "첫 번째 글.", "내용입니다"));
 
-        mockMvc.perform(get("/api/v1/articles/3"))
+        mockMvc.perform(get("/api/v1/articles/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.title").value("첫 번째 글"))
+                .andExpect(jsonPath("$.title").value("첫 번째 글."))
                 .andExpect(jsonPath("$.content").value("내용입니다"))
                 .andDo(print());
 
@@ -60,11 +60,12 @@ class ArticleRestControllerTest {
 
         ArticleAddRequest dto = new ArticleAddRequest("제목입니다", "내용입니다");
 
+        // any()를 사용해서 어떤 것이 들어가도 뒤의 것을 리턴하게 가짜객체를 만들어준다
         given(articleService.add(any())).willReturn(new ArticleAddResponse(1l, dto.getTitle(), dto.getContent()));
 
         mockMvc.perform(post("/api/v1/articles")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsBytes(dto))
+                    .contentType(MediaType.APPLICATION_JSON) // json형태로 변경해서 위의 url에 연결해주는 역할
+                    .content(objectMapper.writeValueAsBytes(dto)) // json형태로 변경해서 위의 url에 연결해주는 역할
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").exists())

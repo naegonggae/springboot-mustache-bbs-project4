@@ -21,7 +21,7 @@ public class Article {
     private String title;
     private String content;
 
-    // Article을 ArticleDto로 만드는 부분
+    // 어디서든지 Article을 ArticleDto로 만드는 부분
     public static ArticleDto of(Article article) {
         return new ArticleDto(article.getId(), article.getTitle(), article.getContent());
     }
