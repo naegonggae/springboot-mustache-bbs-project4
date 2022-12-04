@@ -2,11 +2,13 @@ package com.mustache.bbsproject4.entity;
 
 import com.mustache.bbsproject4.dto.ArticleDto;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Builder
 @Entity
 @Getter
 @Table(name = "article4")
