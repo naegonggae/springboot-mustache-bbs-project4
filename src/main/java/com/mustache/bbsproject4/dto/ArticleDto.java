@@ -1,6 +1,6 @@
 package com.mustache.bbsproject4.dto;
 
-import com.mustache.bbsproject4.Article;
+import com.mustache.bbsproject4.entity.Article;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

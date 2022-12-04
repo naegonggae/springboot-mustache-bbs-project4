@@ -1,5 +1,6 @@
-package com.mustache.bbsproject4;
+package com.mustache.bbsproject4.entity;
 
+import com.mustache.bbsproject4.dto.ArticleDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +19,8 @@ public class Article {
     private String title;
     private String content;
 
-    public Article(String title, String content) {
-        this.title = title;
-        this.content = content;
+    // Article을 ArticleDto로 만드는 부분
+    public static ArticleDto of(Article article) {
+        return new ArticleDto(article.getId(), article.getTitle(), article.getContent());
     }
 }
